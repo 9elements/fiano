@@ -189,7 +189,7 @@ func (s SignatureRSAPSS) Verify(pkIface crypto.PublicKey, hashAlgo Algorithm, si
 	}
 	err = rsa.VerifyPSS(pk, hashfunc, hash, s, &pss)
 	if err != nil {
-		return fmt.Errorf("signature does not correspond to the pub key: %w", err)
+		return fmt.Errorf("signature (RSAPSS) does not correspond to the pub key: %w", err)
 	}
 	return nil
 }
@@ -230,7 +230,7 @@ func (s SignatureRSAASA) Verify(pkIface crypto.PublicKey, hashAlgo Algorithm, si
 
 	err = rsa.VerifyPKCS1v15(pk, hashfunc, hash, s)
 	if err != nil {
-		return fmt.Errorf("signature does not correspond to the pub key: %w", err)
+		return fmt.Errorf("signature (RSAASA) does not correspond to the pub key: %w", err)
 	}
 
 	return nil
